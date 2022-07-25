@@ -20,7 +20,7 @@
     <div v-for="project in projects" :key="project.id">
       <tasks-list
           :project="project"
-          :tasks="project.tasks"
+          :tasks="filteredTasks(project)"
           :show-completed="showCompleted"
       />
     </div>
@@ -40,13 +40,15 @@ export default {
   },
   computed: {
     ...mapGetters(['projects']),
-    tasks () {
-      return this.projects.map(e => e.tasks)
-    }
   },
   data () {
     return {
       showCompleted: false
+    }
+  },
+  methods: {
+    filteredTasks (project) {
+      return project.tasks.filter(task => task.completed === this.showCompleted)
     }
   }
 }

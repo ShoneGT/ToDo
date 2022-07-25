@@ -34,7 +34,7 @@ export default new Vuex.Store({
         {
           id: 1,
           title: 'Call Sara from Los Angeles',
-          completed: true
+          completed: false
         },
         {
           id: 2,
