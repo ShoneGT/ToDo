@@ -68,7 +68,7 @@ export default {
 }
 .secondary {
   background-color: white !important;
-  border: 1px solid #cacaca !important;
+  border: 1px solid #d2d1e3 !important;
 }
 .hoverPrimary {
   background: #eab000 !important;
@@ -80,7 +80,7 @@ export default {
 /* Checkbox icon */
 .sm.primary:after {
   left: 5px;
-  top: 2px;
+  top: 3px;
   width: 3px;
   height: 7px;
   border: solid #fff;
@@ -92,7 +92,7 @@ export default {
 
 .md.primary:after {
   left: 7px !important;
-  top: 2px !important;
+  top: 3px !important;
   width: 5px;
   height: 10px;
   border: solid #fff;
@@ -114,6 +114,44 @@ export default {
   transform: rotate(45deg);
 }
 
+
+/* Checkbox icon */
+.sm.secondary:after {
+  left: 5px;
+  top: 2px;
+  width: 3px;
+  height: 7px;
+  border: solid #d2d1e3;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.md.secondary:after {
+  left: 7px !important;
+  top: 3px !important;
+  width: 5px;
+  height: 10px;
+  border: solid #d2d1e3;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.lg.secondary:after {
+  left: 9px !important;
+  top: 5px !important;
+  width: 5px;
+  height: 10px;
+  border: solid #d2d1e3;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 .secondary:after {
   left: 9px !important;
   top: 5px !important;
@@ -125,6 +163,8 @@ export default {
   -ms-transform: rotate(45deg) !important;
   transform: rotate(45deg) !important;
 }
+
+
 .disabled.primary {
   border: solid 1px #fcefb5 !important;
 }
@@ -159,15 +199,15 @@ export default {
 
 .checkmark.sm {
   position: absolute  !important;
-  top: 9px !important;
-  left: 10px !important;
+  top: 14px !important;
+  left: 14px !important;
   height: 15px !important;
   width: 15px !important;
 }
 
 .checkmark.md {
   position: absolute  !important;
-  top: 9px !important;
+  top: 11px !important;
   left: 10px !important;
   height: 20px !important;
   width: 20px !important;
@@ -180,10 +220,6 @@ export default {
   width: 25px !important;
 }
 
-/*!* On mouse-over, add a grey background color *!*/
-/*.checkmark:hover:after {*/
-/*  background-color: #dc991d;*/
-/*}*/
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {

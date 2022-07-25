@@ -1,9 +1,9 @@
 <template>
-  <div class="tasks">
-    <h1>
+  <div class="tasks mt-2">
+    <h2>
     {{ project.title }}
-    </h1>
-
+    </h2>
+    <hr>
     <div class="d-flex justify-content-between mb-3">
       <b-button
         variant="info"

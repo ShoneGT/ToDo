@@ -53,13 +53,6 @@ export default {
   components: { Checkbox },
   computed: {
     ...mapGetters(['projects']),
-
-    // tasks () {
-    //   return this.project.tasks.filter(task => {
-    //     return task.completed === this.showCompleted
-    //     // return task
-    //   })
-    // }
   },
   data () {
     return {
@@ -74,9 +67,6 @@ export default {
         taskId,
         id: this.project.id
       })
-      // completed: status, taskId, id: this.project.id}
-      // this.$store.commit('updateTask',
-      //     {completed: status, taskId, id: this.$route.params.id})
     }
   },
 }

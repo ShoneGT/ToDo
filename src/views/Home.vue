@@ -1,13 +1,11 @@
 <template>
   <div class="container mt-2">
-<!--   <pre>{{ projects }}</pre>-->
-    <h2>Projects Management App</h2>
+    <h2>Project Management App</h2>
     <hr>
 
    <div class="d-flex justify-content-end">
      <b-button
          variant="info"
-
          size="sm"
          class="mb-3 float-end text-white"
          @click="showCompleted = !showCompleted"
