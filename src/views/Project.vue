@@ -4,15 +4,32 @@
     {{ project.title }}
     </h1>
 
-    <button
-      class="btn btn-primary"
-      @click="showForm = true"
-    >
-      Add Task
-    </button>
+    <div class="d-flex justify-content-between mb-3">
+      <b-button
+        variant="info"
+        size="sm"
+        class="mb-3 text-white"
+        @click="showForm = true"
+      >
+        Add Task
+      </b-button>
 
-    <b-input-group  class="mt-3" v-if="showForm">
-      <b-form-input placeholder="Add new task" v-model="taskName"></b-form-input>
+      <b-button
+        variant="info"
+        size="sm"
+        class="mb-3 float-end text-white"
+        @click="showCompleted = !showCompleted"
+      >
+        {{ showCompleted ? 'Uncompleted tasks' : 'Completed Tasks' }}
+      </b-button>
+    </div>
+
+    <b-input-group  class="mt-3 mb-5" v-if="showForm">
+      <b-form-input
+          placeholder="Add new task"
+          v-model="taskName"
+          autofocus
+      />
       <b-input-group-append>
         <b-button
           variant="outline-success"
@@ -21,59 +38,70 @@
         >
           Save
         </b-button>
-        <b-button variant="default" size="sm">Cancel</b-button>
+        <b-button variant="default" size="sm" @click="showForm = false">Cancel</b-button>
       </b-input-group-append>
     </b-input-group>
 
-    <!-- Task list -->
-    <pre>{{project}}</pre>
-
-    <b-list-group>
-      <b-list-group-item
-          v-for="task in project.tasks" :key="task.id"
-          class="d-flex justify-content-between align-items-center"
-      >
-        {{ task.title }} - {{ task.description }}
-        <div class="d-flex justify-content-between">
-          <div style="font-size: 12px; color: #646464; margin-right: 7px" >{{ project.title }}</div>
-          <b-icon icon="trash" variant="danger" class="cursor-pointer" @click="deleteProject(index)"></b-icon>
-        </div>
-      </b-list-group-item>
-
-    </b-list-group>
-
+    <tasks-list
+      :project="project"
+      :tasks="tasks"
+      :show-completed="showCompleted"
+    />
 
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import TasksList from "@/components/TasksList";
 
 export default {
+  components: {
+    TasksList
+  },
   computed: {
     ...mapGetters(['projects']),
     project () {
       return this.projects.find(e => e.id === parseInt(this.$route.params.id))
+    },
+    tasks () {
+      return this.project.tasks.filter(task => {
+        return task.completed === this.showCompleted
+      })
     }
   },
   data () {
     return {
       showForm: false,
-      taskName: ''
+      taskName: '',
+      showCompleted: false,
+      test: []
     }
   },
   methods: {
-    ...mapActions(['addTask']),
+    ...mapActions(['addTask', 'updateTask']),
     handleAddTask () {
+      let taskId = 0
+      if (this.tasks.length > 0) {
+        const { id } = this.tasks[this.tasks.length - 1]
+        taskId = id
+      }
+
+
+      console.log('ovo je id', taskId)
+      console.log('id + 1', taskId + 1)
       this.addTask({
         id: this.$route.params.id,
         task: {
-          title: this.taskName
+          id:  taskId + 1,
+          title: this.taskName,
+          completed: false
         }
       })
       this.taskName = ''
-    }
-  }
+      this.showForm = false
+    },
+  },
 }
 
 </script>

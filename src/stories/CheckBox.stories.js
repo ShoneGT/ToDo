@@ -6,7 +6,11 @@ export default {
 	argTypes: {
 		size: {
 			control: { type: 'select' },
-			options: ['small', 'medium', 'large']
+			options: ['sm', 'md', 'lg'],
+		},
+		type: {
+			control: { type: 'select' },
+			options: ['primary', 'secondary'],
 		}
 	}
 }
@@ -19,12 +23,18 @@ const Template = (args, { argTypes }) => ({
 
 export const Large = Template.bind({});
 Large.args = {
-	size: 'large',
-	label: 'Button',
+	size: 'lg',
+	type: 'primary'
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+	size: 'md',
+	type: 'primary'
 };
 
 export const Small = Template.bind({});
 Small.args = {
-	size: 'small',
-	label: 'Button',
+	size: 'sm',
+	type: 'primary'
 };
