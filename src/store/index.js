@@ -101,11 +101,9 @@ export default new Vuex.Store({
       commit('deleteProject', payload)
     },
     addTask({commit}, payload) {
-      console.log('add task payload', payload)
       commit('addTask', payload)
     },
     updateTask ({ commit }, payload) {
-      console.log('payload', payload)
       commit(
         'updateTask',
         {

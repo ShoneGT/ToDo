@@ -87,9 +87,6 @@ export default {
         taskId = id
       }
 
-
-      console.log('ovo je id', taskId)
-      console.log('id + 1', taskId + 1)
       this.addTask({
         id: this.$route.params.id,
         task: {

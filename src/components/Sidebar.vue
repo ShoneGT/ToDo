@@ -73,7 +73,6 @@ import { mapActions, mapGetters } from 'vuex';
     },
     mounted () {
       this.showSidebar = true
-      console.log(this.$store.getters.projects);
     }
   }
 </script>

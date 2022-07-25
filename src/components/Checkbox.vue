@@ -50,11 +50,6 @@ export default {
       hover: false
     }
   },
-  watch: {
-    checked (val) {
-      console.log('checked', val)
-    }
-  },
   methods: {
     handleMouseHover (state) {
       if (!this.disabled) {
@@ -206,18 +201,5 @@ export default {
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-
-/* Style the checkmark/indicator */
-/*.container .checkmark:after {*/
-/*  left: 9px;*/
-/*  top: 5px;*/
-/*  width: 5px;*/
-/*  height: 10px;*/
-/*  border: solid white;*/
-/*  border-width: 0 3px 3px 0;*/
-/*  -webkit-transform: rotate(45deg);*/
-/*  -ms-transform: rotate(45deg);*/
-/*  transform: rotate(45deg);*/
-/*}*/
 
 </style>
