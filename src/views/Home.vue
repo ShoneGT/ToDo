@@ -14,14 +14,10 @@
      </b-button>
    </div>
 
-
-    <div v-for="project in projects" :key="project.id">
-      <tasks-list
-          :project="project"
-          :tasks="filteredTasks(project)"
-          :show-completed="showCompleted"
-      />
-    </div>
+<!--    <pre>{{ tasksList(showCompleted) }}</pre>-->
+    <tasks-list
+        :tasks="tasksList(showCompleted)"
+    />
 
   </div>
 </template>
@@ -37,18 +33,13 @@ export default {
     TasksList
   },
   computed: {
-    ...mapGetters(['projects']),
+    ...mapGetters(['projects', 'tasks', 'tasksList']),
   },
   data () {
     return {
       showCompleted: false
     }
   },
-  methods: {
-    filteredTasks (project) {
-      return project.tasks.filter(task => task.completed === this.showCompleted)
-    }
-  }
 }
 </script>
 <style>

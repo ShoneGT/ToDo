@@ -5,53 +5,56 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    tasks: [
+      {
+        id: 1,
+        projectId: 1,
+        title: 'Schedule team building',
+        completed: true
+      },
+      {
+        id: 2,
+        projectId: 1,
+        title: 'Check the project design',
+        completed: false
+      },
+      {
+        id: 3,
+        projectId: 1,
+        title: 'Update mobile app build',
+        completed: true,
+      },
+      {
+        id: 4,
+        projectId: 2,
+        title: 'Call Sara from Los Angeles',
+        completed: false
+      },
+      {
+        id: 5,
+         projectId: 2,
+        title: 'Send email to Jack',
+        completed: false
+      },
+      {
+        id: 6,
+        projectId: 2,
+        title: 'Board meeting',
+        completed: false,
+      },
+      {
+        id: 7,
+        projectId: 2,
+        title: 'Staff meeting',
+        completed: false,
+      },
+    ],
     projects: [{
       id: 1,
       title: 'Project One',
-      tasks: [
-        {
-          id: 1,
-          title: 'Schedule team building',
-          completed: false
-        },
-        {
-          id: 2,
-          title: 'Check the project design',
-          completed: false
-        },
-        {
-          id: 3,
-          title: 'Update mobile app build',
-          completed: false,
-          // completed: true,
-        },
-      ]
-    },
-    {
+    }, {
       id: 2,
       title: 'Project Two',
-      tasks: [
-        {
-          id: 1,
-          title: 'Call Sara from Los Angeles',
-          completed: false
-        },
-        {
-          id: 2,
-          title: 'Send email to Jack',
-          completed: false
-        },
-        {
-          id: 3,
-          title: 'Board meeting',
-          completed: false,
-        },
-        {
-          id: 4,
-          title: 'Staff meeting',
-          completed: false,
-        },
-      ]
     }]
   },
   mutations: {
@@ -92,6 +95,15 @@ export default new Vuex.Store({
     projects(state) {
       return state.projects
     },
+    tasks (state) {
+      return state.tasks
+    },
+    tasksList: (state) => (status) => {
+      return state.tasks.filter(task => task.completed === status)
+    },
+    projectsList: (state) => (id) => {
+      return state.projects.find(project => project.id === id)
+    }
   },
   actions: {
     addProject({ commit }, payload) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="tasks mt-2">
+  <div class="tasks mt-2" v-if="project">
     <h2>
     {{ project.title }}
     </h2>
@@ -44,7 +44,7 @@
 
     <tasks-list
       :project="project"
-      :tasks="tasks"
+      :tasks="tasksList"
       :show-completed="showCompleted"
     />
 
@@ -60,13 +60,18 @@ export default {
     TasksList
   },
   computed: {
-    ...mapGetters(['projects']),
+    ...mapGetters(['projects', 'tasks']),
     project () {
       return this.projects.find(e => e.id === parseInt(this.$route.params.id))
     },
-    tasks () {
-      return this.project.tasks.filter(task => {
-        return task.completed === this.showCompleted
+    tasksList () {
+      return this.tasks.filter(task => {
+        if (
+            task.projectId === parseInt(this.$route.params.id) &&
+            task.completed === this.showCompleted
+        ) {
+          return task
+        }
       })
     }
   },
@@ -99,6 +104,11 @@ export default {
       this.showForm = false
     },
   },
+  mounted () {
+    if (!this.project) {
+      this.$router.push('/')
+    }
+  }
 }
 
 </script>

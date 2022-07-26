@@ -20,9 +20,9 @@
           <div
               class="cursor-pointer"
               style="font-size: 12px; color: #646464; margin-right: 7px"
-              @click="$router.push(`/project/${project.id}`)"
+              @click="$router.push(`/project/${projectsList(task.projectId).id}`)"
           >
-            {{ project.title }}
+            {{ projectsList(task.projectId).title }}
           </div>
         </div>
       </b-list-group-item>
@@ -42,7 +42,7 @@ export default {
       defaults: false
     },
     project: {
-      required: true,
+      required: false,
       type: Object
     },
     tasks: {
@@ -52,7 +52,7 @@ export default {
   },
   components: { Checkbox },
   computed: {
-    ...mapGetters(['projects']),
+    ...mapGetters(['projects', 'projectsList']),
   },
   data () {
     return {

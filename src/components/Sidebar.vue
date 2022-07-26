@@ -17,9 +17,9 @@
             >
               <router-link :to="`/project/${project.id}`" class="link">
                 {{ project.title }}
-                <span style="color: #cacaca">{{project.tasks.length}}</span>
+                <span style="color: #cacaca"></span>
               </router-link>
-              <b-icon icon="trash" variant="danger" @click="deleteProject(index), $router.push('/')"></b-icon>
+              <b-icon icon="trash" variant="danger" @click="deleteProjectSidebar(index)"></b-icon>
             </b-list-group-item>
 
         </b-list-group>
@@ -69,6 +69,12 @@ import { mapActions, mapGetters } from 'vuex';
         this.addProject({id: this.projects.length + 1 ,title: this.projectName})
         this.projectName = ''
         this.showNewProjectForm = false
+      },
+      deleteProjectSidebar (index) {
+        this.deleteProject(index)
+        if (this.$route.name !== 'Home') {
+          this.$router.push('/')
+        }
       }
     },
     mounted () {
